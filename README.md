@@ -74,6 +74,16 @@ Crate Graph provides the **fleet topology analysis** for the SuperInstance ecosy
 
 See [ARCHITECTURE.md](https://github.com/SuperInstance/SuperInstance/blob/main/ARCHITECTURE.md).
 
+**Key insight — Why avoidance dominates:** The 294:1 ratio is not arbitrary. It emerges from the asymmetry of natural selection: a false negative (missing a threat) can be fatal, while a false positive (avoiding a non-threat) wastes only a small amount of energy. The optimal avoidance probability p* that maximizes expected reproductive fitness under asymmetric costs is:
+
+```
+p* = cost_false_negative / (cost_false_negative + cost_false_positive)
+```
+
+When cost_false_negative / cost_false_positive ≈ 294 (e.g., death vs. mild inconvenience), p* ≈ 294/295 ≈ 0.9966. This is the mathematical origin of the conservation ratio.
+
+**Bisimulation checking detail:** Two crates are bisimilar if their dependency neighborhoods are structurally identical — same number of internal dependencies at the same layers. This identifies refactoring opportunities: bisimilar crates can potentially be merged without affecting the overall architecture.
+
 ## References
 
 1. Kahn, A.B. (1962). "Topological Sorting of Large Networks." *Communications of the ACM*, 5(11), 558–562.
